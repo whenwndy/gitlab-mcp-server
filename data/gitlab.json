@@ -1,0 +1,693 @@
+{
+  "projects": [
+    {
+      "id": "P1",
+      "name": "vr-core-engine",
+      "description": "High-performance C++/Vulkan rendering engine powering ImmersaLabs VR experiences. Handles scene graph, draw call batching, foveated rendering, and frame scheduling.",
+      "namespace": "immersa-labs",
+      "default_branch": "main",
+      "visibility": "internal",
+      "star_count": 42,
+      "open_issues_count": 5,
+      "open_mr_count": 3,
+      "last_activity_at": "2026-07-16T18:42:00Z",
+      "languages": ["C++", "GLSL", "Python", "CMake"]
+    },
+    {
+      "id": "P2",
+      "name": "headset-sdk",
+      "description": "Cross-platform SDK abstracting headset hardware (Meta Quest, Pico, HTC Vive, Apple Vision Pro). Exposes unified APIs for tracking, rendering surfaces, and haptics.",
+      "namespace": "immersa-labs",
+      "default_branch": "main",
+      "visibility": "internal",
+      "star_count": 67,
+      "open_issues_count": 4,
+      "open_mr_count": 2,
+      "last_activity_at": "2026-07-17T09:15:00Z",
+      "languages": ["C++", "Swift", "Kotlin", "Python"]
+    },
+    {
+      "id": "P3",
+      "name": "training-sim-platform",
+      "description": "Enterprise VR training simulation platform for industrial safety, medical procedures, and compliance workflows. Includes scenario authoring, LMS integration, and analytics.",
+      "namespace": "immersa-labs",
+      "default_branch": "main",
+      "visibility": "internal",
+      "star_count": 19,
+      "open_issues_count": 4,
+      "open_mr_count": 2,
+      "last_activity_at": "2026-07-15T14:30:00Z",
+      "languages": ["C#", "Python", "TypeScript", "SQL"]
+    },
+    {
+      "id": "P4",
+      "name": "spatial-ui-toolkit",
+      "description": "UI component library for VR interfaces — curved panels, gaze-driven menus, hand-ray interaction, and accessible spatial layouts built on top of the headset-sdk.",
+      "namespace": "immersa-labs",
+      "default_branch": "main",
+      "visibility": "internal",
+      "star_count": 31,
+      "open_issues_count": 3,
+      "open_mr_count": 1,
+      "last_activity_at": "2026-07-16T11:05:00Z",
+      "languages": ["C++", "TypeScript", "GLSL", "JSON"]
+    }
+  ],
+
+  "users": [
+    {
+      "id": "U1",
+      "username": "priya.sharma",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@immersa-labs.io",
+      "role": "Owner",
+      "avatar_url": null,
+      "joined_at": "2023-03-01T00:00:00Z"
+    },
+    {
+      "id": "U2",
+      "username": "marcus.klein",
+      "name": "Marcus Klein",
+      "email": "marcus.klein@immersa-labs.io",
+      "role": "Maintainer",
+      "avatar_url": null,
+      "joined_at": "2023-05-15T00:00:00Z"
+    },
+    {
+      "id": "U3",
+      "username": "yuki.tanaka",
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka@immersa-labs.io",
+      "role": "Maintainer",
+      "avatar_url": null,
+      "joined_at": "2023-08-22T00:00:00Z"
+    },
+    {
+      "id": "U4",
+      "username": "dev.okonkwo",
+      "name": "Dev Okonkwo",
+      "email": "dev.okonkwo@immersa-labs.io",
+      "role": "Developer",
+      "avatar_url": null,
+      "joined_at": "2024-01-10T00:00:00Z"
+    },
+    {
+      "id": "U5",
+      "username": "sofia.reyes",
+      "name": "Sofia Reyes",
+      "email": "sofia.reyes@immersa-labs.io",
+      "role": "Developer",
+      "avatar_url": null,
+      "joined_at": "2024-04-03T00:00:00Z"
+    },
+    {
+      "id": "U6",
+      "username": "liam.obrady",
+      "name": "Liam O'Brady",
+      "email": "liam.obrady@immersa-labs.io",
+      "role": "Developer",
+      "avatar_url": null,
+      "joined_at": "2024-09-17T00:00:00Z"
+    }
+  ],
+
+  "issues": [
+    {
+      "id": "I1",
+      "project_id": "P1",
+      "title": "Frame drop below 72fps on Quest 3 during scene transitions",
+      "description": "When transitioning between scenes with > 800 draw calls, framerate falls to 55-60fps causing motion sickness. Reproducible 100% on Quest 3, intermittent on Pico 4. Suspected CPU-GPU sync bubble in the scene unload path.",
+      "state": "open",
+      "labels": ["bug", "performance", "rendering", "P0"],
+      "assignee_username": "marcus.klein",
+      "milestone": "Engine 2.0 Release",
+      "created_at": "2026-07-10T08:20:00Z",
+      "updated_at": "2026-07-16T17:45:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I2",
+      "project_id": "P2",
+      "title": "Hand tracking latency spike on SDK v2.3 — Quest 3 regression",
+      "description": "After upgrading to SDK v2.3, hand tracking reports 22-28ms latency on Quest 3 vs. 8-10ms on v2.2. The regression appears in the gesture normalisation layer introduced in #sdk-238. Blocking SDK v3.0 GA milestone.",
+      "state": "open",
+      "labels": ["bug", "SDK", "blocker", "P0"],
+      "assignee_username": "yuki.tanaka",
+      "milestone": "SDK v3.0 GA",
+      "created_at": "2026-07-08T14:05:00Z",
+      "updated_at": "2026-07-17T08:50:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I3",
+      "project_id": "P3",
+      "title": "Spatial audio desync in multi-user sessions after 10 minutes",
+      "description": "In sessions with 4+ concurrent users, spatial audio cues drift out of sync starting around the 10-minute mark. Audio objects maintain correct 3D position but lag behind visual anchors by 150-400ms. Suspected clock drift in the session coordinator.",
+      "state": "open",
+      "labels": ["bug", "P1"],
+      "assignee_username": "dev.okonkwo",
+      "milestone": "Training Sim Q3 Launch",
+      "created_at": "2026-07-05T11:30:00Z",
+      "updated_at": "2026-07-14T16:20:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I4",
+      "project_id": "P1",
+      "title": "Implement foveated rendering pipeline for eye-tracked headsets",
+      "description": "Add support for fixed-foveated and dynamic foveated rendering via the Vulkan VK_EXT_fragment_density_map extension. Expected 30-40% GPU load reduction on eye-tracked devices. Requires eye tracking data fed from headset-sdk.",
+      "state": "open",
+      "labels": ["enhancement", "rendering", "P1"],
+      "assignee_username": "marcus.klein",
+      "milestone": "Engine 2.0 Release",
+      "created_at": "2026-06-20T09:00:00Z",
+      "updated_at": "2026-07-11T13:10:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I5",
+      "project_id": "P2",
+      "title": "Add eye tracking calibration API to headset-sdk",
+      "description": "Expose a standardised eye tracking calibration flow across Meta, Pico, and Vision Pro backends. Needed by vr-core-engine for foveated rendering (I4) and spatial-ui-toolkit for gaze selection.",
+      "state": "open",
+      "labels": ["enhancement", "SDK", "P1"],
+      "assignee_username": "yuki.tanaka",
+      "milestone": "SDK v3.0 GA",
+      "created_at": "2026-06-25T15:45:00Z",
+      "updated_at": "2026-07-15T10:30:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I6",
+      "project_id": "P4",
+      "title": "Gaze dwell selection fires double-click event intermittently",
+      "description": "When using gaze-based dwell selection, approximately 1-in-8 selections fires two consecutive click events. Affects all interactive panel types. Suspected debounce logic race condition in GazeDwellHandler.",
+      "state": "open",
+      "labels": ["bug", "UX", "P1"],
+      "assignee_username": "sofia.reyes",
+      "milestone": "Spatial UI v1.5",
+      "created_at": "2026-07-09T10:15:00Z",
+      "updated_at": "2026-07-16T09:40:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I7",
+      "project_id": "P1",
+      "title": "Memory leak in texture streaming — VRAM grows unbounded in long sessions",
+      "description": "Over a 90-minute session, VRAM usage climbs from ~1.8GB to >3.5GB with no release. Heap profiling points to orphaned VkImageView handles in the streaming eviction path. Fixed in MR !14.",
+      "state": "closed",
+      "labels": ["bug", "performance", "P0"],
+      "assignee_username": "marcus.klein",
+      "milestone": "Engine 2.0 Release",
+      "created_at": "2026-06-28T16:00:00Z",
+      "updated_at": "2026-07-13T12:00:00Z",
+      "closed_at": "2026-07-13T12:00:00Z"
+    },
+    {
+      "id": "I8",
+      "project_id": "P3",
+      "title": "LMS SCORM export produces invalid xAPI statements for branching scenarios",
+      "description": "Branching scenario completions generate xAPI statements with missing 'result.completion' field, causing rejections from Cornerstone and SAP SuccessFactors LMS. Affects ~30% of exported training modules.",
+      "state": "closed",
+      "labels": ["bug", "documentation", "P2"],
+      "assignee_username": "liam.obrady",
+      "milestone": "Training Sim Q3 Launch",
+      "created_at": "2026-07-01T09:45:00Z",
+      "updated_at": "2026-07-10T11:30:00Z",
+      "closed_at": "2026-07-10T11:30:00Z"
+    },
+    {
+      "id": "I9",
+      "project_id": "P4",
+      "title": "Curved panel renderer clips content at extreme FOV angles (>90°)",
+      "description": "Content rendered on high-curvature panels (radius < 1.2m) is clipped on the peripheral edges when the user's FOV exceeds 90°. Affects wide-format dashboard layouts in training-sim-platform.",
+      "state": "open",
+      "labels": ["bug", "rendering", "P2"],
+      "assignee_username": "sofia.reyes",
+      "milestone": "Spatial UI v1.5",
+      "created_at": "2026-07-03T14:20:00Z",
+      "updated_at": "2026-07-12T08:55:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I10",
+      "project_id": "P2",
+      "title": "Haptic feedback intensity not normalised across Pico and Quest backends",
+      "description": "The same haptic amplitude value (0.6) produces noticeably different intensities on Pico 4 (weak) vs Quest 3 (strong). Need per-device calibration curves or hardware abstraction in the haptics layer.",
+      "state": "open",
+      "labels": ["enhancement", "SDK", "P2"],
+      "assignee_username": "liam.obrady",
+      "milestone": "SDK v3.0 GA",
+      "created_at": "2026-07-07T11:00:00Z",
+      "updated_at": "2026-07-13T15:20:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I11",
+      "project_id": "P3",
+      "title": "Add scenario analytics dashboard to training-sim-platform",
+      "description": "Product request: instructors need a per-session analytics view showing completion rates, time-on-task, and common failure points per scenario step. Design mocks in Figma (link TBC).",
+      "state": "open",
+      "labels": ["enhancement", "P2"],
+      "assignee_username": "dev.okonkwo",
+      "milestone": "Training Sim Q3 Launch",
+      "created_at": "2026-06-15T10:00:00Z",
+      "updated_at": "2026-07-08T14:00:00Z",
+      "closed_at": null
+    },
+    {
+      "id": "I12",
+      "project_id": "P4",
+      "title": "Document hand-ray interaction model for external contributors",
+      "description": "The hand-ray raycasting and hit-testing API is undocumented. Multiple external contributors have asked questions in #spatial-ui. Need a guide covering RaycastQuery, InteractionSurface, and the event lifecycle.",
+      "state": "closed",
+      "labels": ["documentation", "P2"],
+      "assignee_username": "sofia.reyes",
+      "milestone": "Spatial UI v1.5",
+      "created_at": "2026-06-30T08:30:00Z",
+      "updated_at": "2026-07-09T17:00:00Z",
+      "closed_at": "2026-07-09T17:00:00Z"
+    }
+  ],
+
+  "merge_requests": [
+    {
+      "id": "MR1",
+      "project_id": "P1",
+      "title": "fix: memory leak in texture streaming eviction path",
+      "description": "Properly destroy VkImageView handles on eviction. Fixes I7. Tested over 2h session — VRAM stable at 1.85GB.",
+      "state": "merged",
+      "author_username": "marcus.klein",
+      "assignee_username": "priya.sharma",
+      "reviewers": ["priya.sharma"],
+      "source_branch": "fix/texture-stream-vkimageview-leak",
+      "target_branch": "main",
+      "pipeline_status": "success",
+      "draft": false,
+      "changes_count": 4,
+      "created_at": "2026-07-11T09:30:00Z",
+      "merged_at": "2026-07-13T11:50:00Z"
+    },
+    {
+      "id": "MR2",
+      "project_id": "P2",
+      "title": "feat: add eye tracking calibration API",
+      "description": "Introduces EyeTrackingCalibrator with Meta, Pico, and Vision Pro backend implementations. Addresses I5. Gated behind IMMERSALABS_EYE_TRACKING_V2 feature flag.",
+      "state": "opened",
+      "author_username": "yuki.tanaka",
+      "assignee_username": "priya.sharma",
+      "reviewers": ["priya.sharma", "marcus.klein"],
+      "source_branch": "feat/eye-tracking-calibration",
+      "target_branch": "main",
+      "pipeline_status": "running",
+      "draft": false,
+      "changes_count": 22,
+      "created_at": "2026-07-14T13:00:00Z",
+      "merged_at": null
+    },
+    {
+      "id": "MR3",
+      "project_id": "P1",
+      "title": "feat: implement foveated rendering via VK_EXT_fragment_density_map",
+      "description": "Adds fixed and dynamic foveated rendering modes. Dynamic mode requires eye tracking data from headset-sdk (depends on MR2). Partial implementation — fixed mode ready, dynamic mode draft.",
+      "state": "opened",
+      "author_username": "marcus.klein",
+      "assignee_username": "marcus.klein",
+      "reviewers": ["priya.sharma"],
+      "source_branch": "feat/foveated-rendering",
+      "target_branch": "main",
+      "pipeline_status": "failed",
+      "draft": true,
+      "changes_count": 41,
+      "created_at": "2026-07-15T10:20:00Z",
+      "merged_at": null
+    },
+    {
+      "id": "MR4",
+      "project_id": "P3",
+      "title": "fix: correct xAPI result.completion field in SCORM export",
+      "description": "Adds missing completion field to branching scenario xAPI statement builder. Validated against Cornerstone sandbox. Fixes I8.",
+      "state": "merged",
+      "author_username": "liam.obrady",
+      "assignee_username": "dev.okonkwo",
+      "reviewers": ["dev.okonkwo"],
+      "source_branch": "fix/scorm-xapi-completion",
+      "target_branch": "main",
+      "pipeline_status": "success",
+      "draft": false,
+      "changes_count": 3,
+      "created_at": "2026-07-08T16:00:00Z",
+      "merged_at": "2026-07-10T11:00:00Z"
+    },
+    {
+      "id": "MR5",
+      "project_id": "P2",
+      "title": "fix: hand tracking latency regression in gesture normalisation layer",
+      "description": "Reverts the quaternion pre-multiplication order introduced in #sdk-238 and replaces with correct slerp-based normalisation. Latency back to 8-10ms in benchmarks. Fixes I2.",
+      "state": "opened",
+      "author_username": "yuki.tanaka",
+      "assignee_username": "priya.sharma",
+      "reviewers": ["priya.sharma", "marcus.klein"],
+      "source_branch": "fix/hand-tracking-latency-v23",
+      "target_branch": "main",
+      "pipeline_status": "success",
+      "draft": false,
+      "changes_count": 7,
+      "created_at": "2026-07-16T08:30:00Z",
+      "merged_at": null
+    },
+    {
+      "id": "MR6",
+      "project_id": "P4",
+      "title": "fix: debounce race condition in GazeDwellHandler",
+      "description": "Replaces the timer-based debounce with an atomic state machine. Adds unit tests for rapid gaze-enter/gaze-exit sequences. Fixes I6.",
+      "state": "opened",
+      "author_username": "sofia.reyes",
+      "assignee_username": "yuki.tanaka",
+      "reviewers": ["yuki.tanaka"],
+      "source_branch": "fix/gaze-dwell-double-click",
+      "target_branch": "main",
+      "pipeline_status": "success",
+      "draft": false,
+      "changes_count": 9,
+      "created_at": "2026-07-16T14:00:00Z",
+      "merged_at": null
+    },
+    {
+      "id": "MR7",
+      "project_id": "P3",
+      "title": "feat: scenario analytics dashboard — backend API",
+      "description": "REST + GraphQL API for per-session analytics: completion rate, time-on-task, and step-level failure heatmap. Frontend MR to follow. Partial implementation of I11.",
+      "state": "opened",
+      "author_username": "dev.okonkwo",
+      "assignee_username": "liam.obrady",
+      "reviewers": ["liam.obrady", "priya.sharma"],
+      "source_branch": "feat/analytics-dashboard-api",
+      "target_branch": "main",
+      "pipeline_status": "running",
+      "draft": true,
+      "changes_count": 58,
+      "created_at": "2026-07-17T07:00:00Z",
+      "merged_at": null
+    },
+    {
+      "id": "MR8",
+      "project_id": "P1",
+      "title": "refactor: spatial audio engine — decouple from scene graph",
+      "description": "Moves the spatial audio subsystem into its own ECS component, breaking the hard dependency on SceneNode. Enables audio-only updates at 60Hz independent of render tick. No functional changes.",
+      "state": "closed",
+      "author_username": "dev.okonkwo",
+      "assignee_username": "marcus.klein",
+      "reviewers": ["marcus.klein"],
+      "source_branch": "refactor/spatial-audio-ecs",
+      "target_branch": "main",
+      "pipeline_status": "canceled",
+      "draft": false,
+      "changes_count": 34,
+      "created_at": "2026-07-02T11:00:00Z",
+      "merged_at": null
+    }
+  ],
+
+  "pipelines": [
+    {
+      "id": "PL1",
+      "project_id": "P1",
+      "branch": "main",
+      "commit_sha": "a3f9c12",
+      "status": "success",
+      "triggered_by": "U1",
+      "duration_sec": 312,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"},
+        {"name": "deploy-staging", "status": "success"}
+      ],
+      "created_at": "2026-07-13T12:05:00Z"
+    },
+    {
+      "id": "PL2",
+      "project_id": "P1",
+      "branch": "feat/foveated-rendering",
+      "commit_sha": "8d1e4b7",
+      "status": "failed",
+      "triggered_by": "U2",
+      "duration_sec": 189,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "failed"},
+        {"name": "test", "status": "skipped"},
+        {"name": "package", "status": "skipped"},
+        {"name": "deploy-staging", "status": "skipped"}
+      ],
+      "created_at": "2026-07-15T10:25:00Z"
+    },
+    {
+      "id": "PL3",
+      "project_id": "P2",
+      "branch": "feat/eye-tracking-calibration",
+      "commit_sha": "c72a05f",
+      "status": "running",
+      "triggered_by": "U3",
+      "duration_sec": null,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "running"},
+        {"name": "package", "status": "pending"},
+        {"name": "deploy-staging", "status": "pending"}
+      ],
+      "created_at": "2026-07-17T09:10:00Z"
+    },
+    {
+      "id": "PL4",
+      "project_id": "P2",
+      "branch": "fix/hand-tracking-latency-v23",
+      "commit_sha": "e19b83d",
+      "status": "success",
+      "triggered_by": "U3",
+      "duration_sec": 274,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"},
+        {"name": "deploy-staging", "status": "success"}
+      ],
+      "created_at": "2026-07-16T08:35:00Z"
+    },
+    {
+      "id": "PL5",
+      "project_id": "P2",
+      "branch": "main",
+      "commit_sha": "4fb2c91",
+      "status": "success",
+      "triggered_by": "U1",
+      "duration_sec": 298,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"},
+        {"name": "deploy-staging", "status": "success"},
+        {"name": "deploy-prod", "status": "success"}
+      ],
+      "created_at": "2026-07-10T12:00:00Z"
+    },
+    {
+      "id": "PL6",
+      "project_id": "P3",
+      "branch": "main",
+      "commit_sha": "7ace340",
+      "status": "success",
+      "triggered_by": "U4",
+      "duration_sec": 445,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"},
+        {"name": "deploy-staging", "status": "success"}
+      ],
+      "created_at": "2026-07-10T11:10:00Z"
+    },
+    {
+      "id": "PL7",
+      "project_id": "P3",
+      "branch": "feat/analytics-dashboard-api",
+      "commit_sha": "1d6f80b",
+      "status": "running",
+      "triggered_by": "U4",
+      "duration_sec": null,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "running"},
+        {"name": "test", "status": "pending"},
+        {"name": "package", "status": "pending"},
+        {"name": "deploy-staging", "status": "pending"}
+      ],
+      "created_at": "2026-07-17T07:05:00Z"
+    },
+    {
+      "id": "PL8",
+      "project_id": "P4",
+      "branch": "main",
+      "commit_sha": "b05e77c",
+      "status": "success",
+      "triggered_by": "U1",
+      "duration_sec": 187,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"}
+      ],
+      "created_at": "2026-07-09T17:05:00Z"
+    },
+    {
+      "id": "PL9",
+      "project_id": "P4",
+      "branch": "fix/gaze-dwell-double-click",
+      "commit_sha": "f3a12dc",
+      "status": "success",
+      "triggered_by": "U5",
+      "duration_sec": 201,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "success"},
+        {"name": "test", "status": "success"},
+        {"name": "package", "status": "success"}
+      ],
+      "created_at": "2026-07-16T14:05:00Z"
+    },
+    {
+      "id": "PL10",
+      "project_id": "P1",
+      "branch": "refactor/spatial-audio-ecs",
+      "commit_sha": "d92f6a3",
+      "status": "canceled",
+      "triggered_by": "U4",
+      "duration_sec": 88,
+      "stages": [
+        {"name": "lint", "status": "success"},
+        {"name": "build", "status": "canceled"},
+        {"name": "test", "status": "skipped"},
+        {"name": "package", "status": "skipped"},
+        {"name": "deploy-staging", "status": "skipped"}
+      ],
+      "created_at": "2026-07-02T11:05:00Z"
+    }
+  ],
+
+  "commits": [
+    {
+      "short_id": "a3f9c12",
+      "project_id": "P1",
+      "message": "Merge MR!1: fix memory leak in texture streaming eviction path",
+      "author": "priya.sharma",
+      "branch": "main",
+      "created_at": "2026-07-13T11:50:00Z"
+    },
+    {
+      "short_id": "8d1e4b7",
+      "project_id": "P1",
+      "message": "feat: add VK_EXT_fragment_density_map pipeline layout — fixed foveation mode only",
+      "author": "marcus.klein",
+      "branch": "feat/foveated-rendering",
+      "created_at": "2026-07-15T10:10:00Z"
+    },
+    {
+      "short_id": "e19b83d",
+      "project_id": "P2",
+      "message": "fix: replace incorrect quaternion pre-multiply with slerp normalisation in gesture layer",
+      "author": "yuki.tanaka",
+      "branch": "fix/hand-tracking-latency-v23",
+      "created_at": "2026-07-16T08:20:00Z"
+    },
+    {
+      "short_id": "c72a05f",
+      "project_id": "P2",
+      "message": "feat: EyeTrackingCalibrator — Vision Pro backend implementation",
+      "author": "yuki.tanaka",
+      "branch": "feat/eye-tracking-calibration",
+      "created_at": "2026-07-17T09:00:00Z"
+    },
+    {
+      "short_id": "7ace340",
+      "project_id": "P3",
+      "message": "Merge MR!4: fix xAPI result.completion field in SCORM export",
+      "author": "dev.okonkwo",
+      "branch": "main",
+      "created_at": "2026-07-10T11:00:00Z"
+    },
+    {
+      "short_id": "1d6f80b",
+      "project_id": "P3",
+      "message": "feat: analytics dashboard — add GraphQL resolvers for step-level failure heatmap",
+      "author": "dev.okonkwo",
+      "branch": "feat/analytics-dashboard-api",
+      "created_at": "2026-07-17T06:55:00Z"
+    },
+    {
+      "short_id": "b05e77c",
+      "project_id": "P4",
+      "message": "docs: add hand-ray interaction model guide and API reference",
+      "author": "sofia.reyes",
+      "branch": "main",
+      "created_at": "2026-07-09T16:50:00Z"
+    },
+    {
+      "short_id": "f3a12dc",
+      "project_id": "P4",
+      "message": "fix: replace timer debounce with atomic state machine in GazeDwellHandler",
+      "author": "sofia.reyes",
+      "branch": "fix/gaze-dwell-double-click",
+      "created_at": "2026-07-16T13:50:00Z"
+    }
+  ],
+
+  "milestones": [
+    {
+      "id": "M1",
+      "project_id": "P2",
+      "title": "SDK v3.0 GA",
+      "description": "General availability release of headset-sdk v3.0. Key deliverables: eye tracking calibration API, haptic normalisation, hand tracking latency fixes, and Vision Pro 2 support.",
+      "state": "active",
+      "due_date": "2026-08-15",
+      "open_issues_count": 3,
+      "closed_issues_count": 1
+    },
+    {
+      "id": "M2",
+      "project_id": "P1",
+      "title": "Engine 2.0 Release",
+      "description": "Major engine release with foveated rendering, multi-GPU support, and the decoupled spatial audio ECS subsystem. Target: 20% average GPU load reduction vs 1.x.",
+      "state": "active",
+      "due_date": "2026-09-01",
+      "open_issues_count": 2,
+      "closed_issues_count": 1
+    },
+    {
+      "id": "M3",
+      "project_id": "P3",
+      "title": "Training Sim Q3 Launch",
+      "description": "Q3 commercial launch of training-sim-platform v2 with new scenario analytics dashboard, xAPI/SCORM 2004 compliance, and spatial audio improvements.",
+      "state": "active",
+      "due_date": "2026-09-30",
+      "open_issues_count": 2,
+      "closed_issues_count": 2
+    },
+    {
+      "id": "M4",
+      "project_id": "P4",
+      "title": "Spatial UI v1.5",
+      "description": "Stability and polish release: gaze dwell fixes, curved panel clip fixes, accessibility pass, and contributor documentation for hand-ray interaction.",
+      "state": "active",
+      "due_date": "2026-08-01",
+      "open_issues_count": 2,
+      "closed_issues_count": 1
+    }
+  ]
+}
