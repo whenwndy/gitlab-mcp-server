@@ -3,7 +3,7 @@
     {
       "id": "P1",
       "name": "vr-core-engine",
-      "description": "High-performance C++/Vulkan rendering engine powering ImmersaLabs VR experiences. Handles scene graph, draw call batching, foveated rendering, and frame scheduling.",
+      "description": "High-performance C++/Vulkan rendering engine powering VectorLabs VR experiences. Handles scene graph, draw call batching, foveated rendering, and frame scheduling.",
       "namespace": "immersa-labs",
       "default_branch": "main",
       "visibility": "internal",
@@ -11,7 +11,12 @@
       "open_issues_count": 5,
       "open_mr_count": 3,
       "last_activity_at": "2026-07-16T18:42:00Z",
-      "languages": ["C++", "GLSL", "Python", "CMake"]
+      "languages": [
+        "C++",
+        "GLSL",
+        "Python",
+        "CMake"
+      ]
     },
     {
       "id": "P2",
@@ -24,7 +29,12 @@
       "open_issues_count": 4,
       "open_mr_count": 2,
       "last_activity_at": "2026-07-17T09:15:00Z",
-      "languages": ["C++", "Swift", "Kotlin", "Python"]
+      "languages": [
+        "C++",
+        "Swift",
+        "Kotlin",
+        "Python"
+      ]
     },
     {
       "id": "P3",
@@ -37,7 +47,12 @@
       "open_issues_count": 4,
       "open_mr_count": 2,
       "last_activity_at": "2026-07-15T14:30:00Z",
-      "languages": ["C#", "Python", "TypeScript", "SQL"]
+      "languages": [
+        "C#",
+        "Python",
+        "TypeScript",
+        "SQL"
+      ]
     },
     {
       "id": "P4",
@@ -50,10 +65,14 @@
       "open_issues_count": 3,
       "open_mr_count": 1,
       "last_activity_at": "2026-07-16T11:05:00Z",
-      "languages": ["C++", "TypeScript", "GLSL", "JSON"]
+      "languages": [
+        "C++",
+        "TypeScript",
+        "GLSL",
+        "JSON"
+      ]
     }
   ],
-
   "users": [
     {
       "id": "U1",
@@ -110,7 +129,6 @@
       "joined_at": "2024-09-17T00:00:00Z"
     }
   ],
-
   "issues": [
     {
       "id": "I1",
@@ -118,7 +136,12 @@
       "title": "Frame drop below 72fps on Quest 3 during scene transitions",
       "description": "When transitioning between scenes with > 800 draw calls, framerate falls to 55-60fps causing motion sickness. Reproducible 100% on Quest 3, intermittent on Pico 4. Suspected CPU-GPU sync bubble in the scene unload path.",
       "state": "open",
-      "labels": ["bug", "performance", "rendering", "P0"],
+      "labels": [
+        "bug",
+        "performance",
+        "rendering",
+        "P0"
+      ],
       "assignee_username": "marcus.klein",
       "milestone": "Engine 2.0 Release",
       "created_at": "2026-07-10T08:20:00Z",
@@ -131,7 +154,12 @@
       "title": "Hand tracking latency spike on SDK v2.3 — Quest 3 regression",
       "description": "After upgrading to SDK v2.3, hand tracking reports 22-28ms latency on Quest 3 vs. 8-10ms on v2.2. The regression appears in the gesture normalisation layer introduced in #sdk-238. Blocking SDK v3.0 GA milestone.",
       "state": "open",
-      "labels": ["bug", "SDK", "blocker", "P0"],
+      "labels": [
+        "bug",
+        "SDK",
+        "blocker",
+        "P0"
+      ],
       "assignee_username": "yuki.tanaka",
       "milestone": "SDK v3.0 GA",
       "created_at": "2026-07-08T14:05:00Z",
@@ -144,7 +172,10 @@
       "title": "Spatial audio desync in multi-user sessions after 10 minutes",
       "description": "In sessions with 4+ concurrent users, spatial audio cues drift out of sync starting around the 10-minute mark. Audio objects maintain correct 3D position but lag behind visual anchors by 150-400ms. Suspected clock drift in the session coordinator.",
       "state": "open",
-      "labels": ["bug", "P1"],
+      "labels": [
+        "bug",
+        "P1"
+      ],
       "assignee_username": "dev.okonkwo",
       "milestone": "Training Sim Q3 Launch",
       "created_at": "2026-07-05T11:30:00Z",
@@ -157,7 +188,11 @@
       "title": "Implement foveated rendering pipeline for eye-tracked headsets",
       "description": "Add support for fixed-foveated and dynamic foveated rendering via the Vulkan VK_EXT_fragment_density_map extension. Expected 30-40% GPU load reduction on eye-tracked devices. Requires eye tracking data fed from headset-sdk.",
       "state": "open",
-      "labels": ["enhancement", "rendering", "P1"],
+      "labels": [
+        "enhancement",
+        "rendering",
+        "P1"
+      ],
       "assignee_username": "marcus.klein",
       "milestone": "Engine 2.0 Release",
       "created_at": "2026-06-20T09:00:00Z",
@@ -170,7 +205,11 @@
       "title": "Add eye tracking calibration API to headset-sdk",
       "description": "Expose a standardised eye tracking calibration flow across Meta, Pico, and Vision Pro backends. Needed by vr-core-engine for foveated rendering (I4) and spatial-ui-toolkit for gaze selection.",
       "state": "open",
-      "labels": ["enhancement", "SDK", "P1"],
+      "labels": [
+        "enhancement",
+        "SDK",
+        "P1"
+      ],
       "assignee_username": "yuki.tanaka",
       "milestone": "SDK v3.0 GA",
       "created_at": "2026-06-25T15:45:00Z",
@@ -183,7 +222,11 @@
       "title": "Gaze dwell selection fires double-click event intermittently",
       "description": "When using gaze-based dwell selection, approximately 1-in-8 selections fires two consecutive click events. Affects all interactive panel types. Suspected debounce logic race condition in GazeDwellHandler.",
       "state": "open",
-      "labels": ["bug", "UX", "P1"],
+      "labels": [
+        "bug",
+        "UX",
+        "P1"
+      ],
       "assignee_username": "sofia.reyes",
       "milestone": "Spatial UI v1.5",
       "created_at": "2026-07-09T10:15:00Z",
@@ -196,7 +239,11 @@
       "title": "Memory leak in texture streaming — VRAM grows unbounded in long sessions",
       "description": "Over a 90-minute session, VRAM usage climbs from ~1.8GB to >3.5GB with no release. Heap profiling points to orphaned VkImageView handles in the streaming eviction path. Fixed in MR !14.",
       "state": "closed",
-      "labels": ["bug", "performance", "P0"],
+      "labels": [
+        "bug",
+        "performance",
+        "P0"
+      ],
       "assignee_username": "marcus.klein",
       "milestone": "Engine 2.0 Release",
       "created_at": "2026-06-28T16:00:00Z",
@@ -207,9 +254,13 @@
       "id": "I8",
       "project_id": "P3",
       "title": "LMS SCORM export produces invalid xAPI statements for branching scenarios",
-      "description": "Branching scenario completions generate xAPI statements with missing 'result.completion' field, causing rejections from Cornerstone and SAP SuccessFactors LMS. Affects ~30% of exported training modules.",
+      "description": "Branching scenario completions generate xAPI statements with missing 'result.completion' field, causing rejections from Cornerstone and EnterpriseOne SuccessFactors LMS. Affects ~30% of exported training modules.",
       "state": "closed",
-      "labels": ["bug", "documentation", "P2"],
+      "labels": [
+        "bug",
+        "documentation",
+        "P2"
+      ],
       "assignee_username": "liam.obrady",
       "milestone": "Training Sim Q3 Launch",
       "created_at": "2026-07-01T09:45:00Z",
@@ -222,7 +273,11 @@
       "title": "Curved panel renderer clips content at extreme FOV angles (>90°)",
       "description": "Content rendered on high-curvature panels (radius < 1.2m) is clipped on the peripheral edges when the user's FOV exceeds 90°. Affects wide-format dashboard layouts in training-sim-platform.",
       "state": "open",
-      "labels": ["bug", "rendering", "P2"],
+      "labels": [
+        "bug",
+        "rendering",
+        "P2"
+      ],
       "assignee_username": "sofia.reyes",
       "milestone": "Spatial UI v1.5",
       "created_at": "2026-07-03T14:20:00Z",
@@ -235,7 +290,11 @@
       "title": "Haptic feedback intensity not normalised across Pico and Quest backends",
       "description": "The same haptic amplitude value (0.6) produces noticeably different intensities on Pico 4 (weak) vs Quest 3 (strong). Need per-device calibration curves or hardware abstraction in the haptics layer.",
       "state": "open",
-      "labels": ["enhancement", "SDK", "P2"],
+      "labels": [
+        "enhancement",
+        "SDK",
+        "P2"
+      ],
       "assignee_username": "liam.obrady",
       "milestone": "SDK v3.0 GA",
       "created_at": "2026-07-07T11:00:00Z",
@@ -248,7 +307,10 @@
       "title": "Add scenario analytics dashboard to training-sim-platform",
       "description": "Product request: instructors need a per-session analytics view showing completion rates, time-on-task, and common failure points per scenario step. Design mocks in Figma (link TBC).",
       "state": "open",
-      "labels": ["enhancement", "P2"],
+      "labels": [
+        "enhancement",
+        "P2"
+      ],
       "assignee_username": "dev.okonkwo",
       "milestone": "Training Sim Q3 Launch",
       "created_at": "2026-06-15T10:00:00Z",
@@ -261,7 +323,10 @@
       "title": "Document hand-ray interaction model for external contributors",
       "description": "The hand-ray raycasting and hit-testing API is undocumented. Multiple external contributors have asked questions in #spatial-ui. Need a guide covering RaycastQuery, InteractionSurface, and the event lifecycle.",
       "state": "closed",
-      "labels": ["documentation", "P2"],
+      "labels": [
+        "documentation",
+        "P2"
+      ],
       "assignee_username": "sofia.reyes",
       "milestone": "Spatial UI v1.5",
       "created_at": "2026-06-30T08:30:00Z",
@@ -269,7 +334,6 @@
       "closed_at": "2026-07-09T17:00:00Z"
     }
   ],
-
   "merge_requests": [
     {
       "id": "MR1",
@@ -279,7 +343,9 @@
       "state": "merged",
       "author_username": "marcus.klein",
       "assignee_username": "priya.sharma",
-      "reviewers": ["priya.sharma"],
+      "reviewers": [
+        "priya.sharma"
+      ],
       "source_branch": "fix/texture-stream-vkimageview-leak",
       "target_branch": "main",
       "pipeline_status": "success",
@@ -296,7 +362,10 @@
       "state": "opened",
       "author_username": "yuki.tanaka",
       "assignee_username": "priya.sharma",
-      "reviewers": ["priya.sharma", "marcus.klein"],
+      "reviewers": [
+        "priya.sharma",
+        "marcus.klein"
+      ],
       "source_branch": "feat/eye-tracking-calibration",
       "target_branch": "main",
       "pipeline_status": "running",
@@ -313,7 +382,9 @@
       "state": "opened",
       "author_username": "marcus.klein",
       "assignee_username": "marcus.klein",
-      "reviewers": ["priya.sharma"],
+      "reviewers": [
+        "priya.sharma"
+      ],
       "source_branch": "feat/foveated-rendering",
       "target_branch": "main",
       "pipeline_status": "failed",
@@ -330,7 +401,9 @@
       "state": "merged",
       "author_username": "liam.obrady",
       "assignee_username": "dev.okonkwo",
-      "reviewers": ["dev.okonkwo"],
+      "reviewers": [
+        "dev.okonkwo"
+      ],
       "source_branch": "fix/scorm-xapi-completion",
       "target_branch": "main",
       "pipeline_status": "success",
@@ -347,7 +420,10 @@
       "state": "opened",
       "author_username": "yuki.tanaka",
       "assignee_username": "priya.sharma",
-      "reviewers": ["priya.sharma", "marcus.klein"],
+      "reviewers": [
+        "priya.sharma",
+        "marcus.klein"
+      ],
       "source_branch": "fix/hand-tracking-latency-v23",
       "target_branch": "main",
       "pipeline_status": "success",
@@ -364,7 +440,9 @@
       "state": "opened",
       "author_username": "sofia.reyes",
       "assignee_username": "yuki.tanaka",
-      "reviewers": ["yuki.tanaka"],
+      "reviewers": [
+        "yuki.tanaka"
+      ],
       "source_branch": "fix/gaze-dwell-double-click",
       "target_branch": "main",
       "pipeline_status": "success",
@@ -381,7 +459,10 @@
       "state": "opened",
       "author_username": "dev.okonkwo",
       "assignee_username": "liam.obrady",
-      "reviewers": ["liam.obrady", "priya.sharma"],
+      "reviewers": [
+        "liam.obrady",
+        "priya.sharma"
+      ],
       "source_branch": "feat/analytics-dashboard-api",
       "target_branch": "main",
       "pipeline_status": "running",
@@ -398,7 +479,9 @@
       "state": "closed",
       "author_username": "dev.okonkwo",
       "assignee_username": "marcus.klein",
-      "reviewers": ["marcus.klein"],
+      "reviewers": [
+        "marcus.klein"
+      ],
       "source_branch": "refactor/spatial-audio-ecs",
       "target_branch": "main",
       "pipeline_status": "canceled",
@@ -408,7 +491,6 @@
       "merged_at": null
     }
   ],
-
   "pipelines": [
     {
       "id": "PL1",
@@ -419,11 +501,26 @@
       "triggered_by": "U1",
       "duration_sec": 312,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"},
-        {"name": "deploy-staging", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-13T12:05:00Z"
     },
@@ -436,11 +533,26 @@
       "triggered_by": "U2",
       "duration_sec": 189,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "failed"},
-        {"name": "test", "status": "skipped"},
-        {"name": "package", "status": "skipped"},
-        {"name": "deploy-staging", "status": "skipped"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "failed"
+        },
+        {
+          "name": "test",
+          "status": "skipped"
+        },
+        {
+          "name": "package",
+          "status": "skipped"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "skipped"
+        }
       ],
       "created_at": "2026-07-15T10:25:00Z"
     },
@@ -453,11 +565,26 @@
       "triggered_by": "U3",
       "duration_sec": null,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "running"},
-        {"name": "package", "status": "pending"},
-        {"name": "deploy-staging", "status": "pending"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "running"
+        },
+        {
+          "name": "package",
+          "status": "pending"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "pending"
+        }
       ],
       "created_at": "2026-07-17T09:10:00Z"
     },
@@ -470,11 +597,26 @@
       "triggered_by": "U3",
       "duration_sec": 274,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"},
-        {"name": "deploy-staging", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-16T08:35:00Z"
     },
@@ -487,12 +629,30 @@
       "triggered_by": "U1",
       "duration_sec": 298,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"},
-        {"name": "deploy-staging", "status": "success"},
-        {"name": "deploy-prod", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "success"
+        },
+        {
+          "name": "deploy-prod",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-10T12:00:00Z"
     },
@@ -505,11 +665,26 @@
       "triggered_by": "U4",
       "duration_sec": 445,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"},
-        {"name": "deploy-staging", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-10T11:10:00Z"
     },
@@ -522,11 +697,26 @@
       "triggered_by": "U4",
       "duration_sec": null,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "running"},
-        {"name": "test", "status": "pending"},
-        {"name": "package", "status": "pending"},
-        {"name": "deploy-staging", "status": "pending"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "running"
+        },
+        {
+          "name": "test",
+          "status": "pending"
+        },
+        {
+          "name": "package",
+          "status": "pending"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "pending"
+        }
       ],
       "created_at": "2026-07-17T07:05:00Z"
     },
@@ -539,10 +729,22 @@
       "triggered_by": "U1",
       "duration_sec": 187,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-09T17:05:00Z"
     },
@@ -555,10 +757,22 @@
       "triggered_by": "U5",
       "duration_sec": 201,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "success"},
-        {"name": "test", "status": "success"},
-        {"name": "package", "status": "success"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "success"
+        },
+        {
+          "name": "test",
+          "status": "success"
+        },
+        {
+          "name": "package",
+          "status": "success"
+        }
       ],
       "created_at": "2026-07-16T14:05:00Z"
     },
@@ -571,16 +785,30 @@
       "triggered_by": "U4",
       "duration_sec": 88,
       "stages": [
-        {"name": "lint", "status": "success"},
-        {"name": "build", "status": "canceled"},
-        {"name": "test", "status": "skipped"},
-        {"name": "package", "status": "skipped"},
-        {"name": "deploy-staging", "status": "skipped"}
+        {
+          "name": "lint",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "status": "canceled"
+        },
+        {
+          "name": "test",
+          "status": "skipped"
+        },
+        {
+          "name": "package",
+          "status": "skipped"
+        },
+        {
+          "name": "deploy-staging",
+          "status": "skipped"
+        }
       ],
       "created_at": "2026-07-02T11:05:00Z"
     }
   ],
-
   "commits": [
     {
       "short_id": "a3f9c12",
@@ -647,7 +875,6 @@
       "created_at": "2026-07-16T13:50:00Z"
     }
   ],
-
   "milestones": [
     {
       "id": "M1",
